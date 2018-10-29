@@ -3,12 +3,12 @@
 namespace interfaces;
 
 /**
-     * Interface EntityInterface.
+ * Interface EntityInterface.
+ */
+interface EntityInterface
+{
+    /**
+     * @return string
      */
-    interface EntityInterface
-    {
-        /**
-         * @return string
-         */
-        public function __toString(): string;
-    }
+    public function __toString(): string;
+}
