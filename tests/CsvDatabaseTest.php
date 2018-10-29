@@ -1,15 +1,14 @@
 <?php
     declare(strict_types=1);
 
-    use PHPUnit\Framework\TestCase;
-    use managers\DatabaseInterface;
-    use interfaces\EntityInterface;
     use entities\PersonEntity;
+    use interfaces\EntityInterface;
     use managers\CsvDatabaseManager;
+    use managers\DatabaseInterface;
+    use PHPUnit\Framework\TestCase;
 
     class CsvDatabaseTest extends TestCase
     {
-
         /**
          * @var string
          */
@@ -42,7 +41,6 @@
         {
             unlink($this->fileName);
         }
-
 
         public function test_getEntityClass()
         {
@@ -84,7 +82,6 @@
             $this->db->saveRecord($entity);
             $recordsAfter = count($this->db->getAllRecords());
 
-            $this->assertEquals($recordsAfter, ($recordsBefore+1));
+            $this->assertEquals($recordsAfter, ($recordsBefore + 1));
         }
-
     }

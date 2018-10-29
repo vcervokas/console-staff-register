@@ -1,16 +1,14 @@
 <?php
 
-    namespace managers;
+namespace managers;
 
-    use interfaces\EntityInterface;
+use interfaces\EntityInterface;
 
     /**
-     * Class ConsoleManager
-     * @package managers
+     * Class ConsoleManager.
      */
     class ConsoleManager
     {
-
         /**
          * @var DatabaseInterface
          */
@@ -18,6 +16,7 @@
 
         /**
          * ConsoleManager constructor.
+         *
          * @param DatabaseInterface $db
          */
         public function __construct(DatabaseInterface $db)
@@ -26,11 +25,11 @@
         }
 
         /**
-         * Prints help section
+         * Prints help section.
          */
         public function help(): void
         {
-            echo "
+            echo '
             Console Staff Management Tool!
             
             Usage: 
@@ -46,7 +45,7 @@
                 edit [id]
                 import [file.csv]
             
-            ";
+            ';
         }
 
         /**
@@ -135,6 +134,4 @@
 
             return $entity;
         }
-
-
     }

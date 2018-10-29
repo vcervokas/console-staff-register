@@ -1,12 +1,10 @@
 <?php
 
-    namespace exceptions;
+namespace exceptions;
 
-    /**
-     * Class DatabaseException
-     * @package exceptions
+/**
+     * Class DatabaseException.
      */
     class DatabaseException extends \Exception
     {
-
     }
