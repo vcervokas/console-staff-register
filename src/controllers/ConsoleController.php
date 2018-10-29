@@ -1,18 +1,16 @@
 <?php
 
-    namespace controllers;
+namespace controllers;
 
-    use entities\PersonEntity;
+use entities\PersonEntity;
     use managers\ConsoleManager;
     use managers\CsvDatabaseManager;
 
     /**
-     * Class ConsoleController
-     * @package controllers
+     * Class ConsoleController.
      */
     class ConsoleController
     {
-
         /**
          * @param $argc
          * @param $argv
@@ -34,28 +32,30 @@
             } catch (\Exception $e) {
                 echo $e->getMessage();
             }
-
         }
 
         /**
          * @param array $argv
+         *
          * @return array|null
          */
         private function extractConsoleArguments(array $argv):?array
         {
             unset($argv[0]);
-            if (isset($argv[1])) unset($argv[1]);
+            if (isset($argv[1])) {
+                unset($argv[1]);
+            }
 
             return array_values($argv);
         }
 
         /**
          * @param array $argv
+         *
          * @return null|string
          */
         private function extractConsoleCommand(array $argv):?string
         {
-            return isset($argv[1]) ? $argv[1] : null ;
+            return isset($argv[1]) ? $argv[1] : null;
         }
-
     }

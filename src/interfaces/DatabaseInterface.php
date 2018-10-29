@@ -1,16 +1,14 @@
 <?php
 
-    namespace managers;
+namespace managers;
 
-    use interfaces\EntityInterface;
+use interfaces\EntityInterface;
 
     /**
-     * Interface DatabaseInterface
-     * @package managers
+     * Interface DatabaseInterface.
      */
     interface DatabaseInterface
     {
-
         /**
          * @return array|null
          */
@@ -28,12 +26,14 @@
 
         /**
          * @param int $id
+         *
          * @return mixed
          */
         public function deleteRecord(int $id): void;
 
         /**
          * @param int $id
+         *
          * @return mixed
          */
         public function updateRecord(int $id, $entity): void;
@@ -42,6 +42,7 @@
          * @param string $filename
          */
         public function importFile(string $filename): void;
+
         /**
          * @return string
          */

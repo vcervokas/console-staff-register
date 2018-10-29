@@ -1,19 +1,17 @@
 <?php
 
-    namespace entities;
+namespace entities;
 
-    use exceptions\ValidationException;
+use exceptions\ValidationException;
     use interfaces\EntityInterface;
 
     /**
-     * Entity to manipulate person's data
+     * Entity to manipulate person's data.
      *
      * Class PersonEntity
-     * @package entities
      */
     class PersonEntity implements EntityInterface
     {
-
         /**
          * @var string
          */
@@ -69,9 +67,10 @@
 
         /**
          * @param string $firstName
+         *
          * @return PersonEntity
          */
-        public function setFirstName(string $firstName): PersonEntity
+        public function setFirstName(string $firstName): self
         {
             if (empty($firstName)) {
                 throw new ValidationException('First name must be provided');
@@ -92,9 +91,10 @@
 
         /**
          * @param string $lastName
+         *
          * @return PersonEntity
          */
-        public function setLastName(string $lastName): PersonEntity
+        public function setLastName(string $lastName): self
         {
             if (empty($lastName)) {
                 throw new ValidationException('Last name must be provided');
@@ -115,9 +115,10 @@
 
         /**
          * @param string $email
+         *
          * @return PersonEntity
          */
-        public function setEmail(string $email): PersonEntity
+        public function setEmail(string $email): self
         {
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 throw new ValidationException('Valid email must be provided');
@@ -137,9 +138,10 @@
 
         /**
          * @param string $phoneNumber1
+         *
          * @return PersonEntity
          */
-        public function setPhoneNumber1(string $phoneNumber1): PersonEntity
+        public function setPhoneNumber1(string $phoneNumber1): self
         {
             $this->phoneNumber1 = $phoneNumber1;
 
@@ -156,9 +158,10 @@
 
         /**
          * @param string $phoneNumber2
+         *
          * @return PersonEntity
          */
-        public function setPhoneNumber2(string $phoneNumber2): PersonEntity
+        public function setPhoneNumber2(string $phoneNumber2): self
         {
             $this->phoneNumber2 = $phoneNumber2;
 
@@ -175,13 +178,13 @@
 
         /**
          * @param string $comment
+         *
          * @return PersonEntity
          */
-        public function setComment(string $comment): PersonEntity
+        public function setComment(string $comment): self
         {
             $this->comment = $comment;
 
             return $this;
         }
-
     }

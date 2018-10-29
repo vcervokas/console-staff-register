@@ -1,12 +1,10 @@
 <?php
 
-    namespace exceptions;
+namespace exceptions;
 
-    /**
-     * Class ValidationException
-     * @package exceptions
+/**
+     * Class ValidationException.
      */
     class ValidationException extends \Exception
     {
-
     }

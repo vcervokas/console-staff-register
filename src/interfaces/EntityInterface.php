@@ -1,10 +1,9 @@
 <?php
 
-    namespace interfaces;
+namespace interfaces;
 
-    /**
-     * Interface EntityInterface
-     * @package interfaces
+/**
+     * Interface EntityInterface.
      */
     interface EntityInterface
     {

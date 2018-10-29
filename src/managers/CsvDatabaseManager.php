@@ -1,23 +1,22 @@
 <?php
 
-    namespace managers;
+namespace managers;
 
-    use exceptions\DatabaseException;
+use exceptions\DatabaseException;
     use interfaces\EntityInterface;
 
     /**
-     * Class CsvDatabaseManager
-     * @package managers
+     * Class CsvDatabaseManager.
      */
     class CsvDatabaseManager implements DatabaseInterface
     {
         /**
-         * CSV file delemiter
+         * CSV file delemiter.
          */
         const CSV_DELIMITER = ';';
 
         /**
-         * New line delimiter
+         * New line delimiter.
          */
         const NEW_LINE_DELIMITER = "\r\n";
 
@@ -32,6 +31,7 @@
 
         /**
          * CsvDatabaseManager constructor.
+         *
          * @param string $filePath
          * @param string $entityClass
          */
@@ -50,19 +50,23 @@
         }
 
         /**
-         * @return array|null
          * @throws DatabaseException
+         *
+         * @return array|null
          */
         public function getAllRecords(): ?array
         {
             $allRecords = $this->readFile();
+
             return $allRecords;
         }
 
         /**
          * @param int $id
-         * @return EntityInterface
+         *
          * @throws DatabaseException
+         *
+         * @return EntityInterface
          */
         public function getRecord(int $id): EntityInterface
         {
@@ -80,11 +84,13 @@
 
         /**
          * @param EntityInterface $entity
+         *
          * @throws DatabaseException
          */
         public function saveRecord(EntityInterface $entity): void
         {
             $entities = [];
+
             try {
                 $entities = $this->readFile();
             } catch (DatabaseException $e) {
@@ -99,6 +105,7 @@
 
         /**
          * @param int $id
+         *
          * @throws DatabaseException
          */
         public function deleteRecord(int $id): void
@@ -114,6 +121,7 @@
         /**
          * @param int $id
          * @param $entity
+         *
          * @throws DatabaseException
          */
         public function updateRecord(int $id, $entity): void
@@ -124,8 +132,9 @@
         }
 
         /**
-         * @return array
          * @throws DatabaseException
+         *
+         * @return array
          */
         private function readFile(): array
         {
@@ -133,7 +142,7 @@
             if (file_exists($this->dbFile)) {
                 $content = file_get_contents($this->dbFile);
             }
-            if(empty($content)) {
+            if (empty($content)) {
                 throw new DatabaseException('DB is empty');
             }
             $lines = explode(self::NEW_LINE_DELIMITER, $content);
@@ -147,6 +156,7 @@
 
         /**
          * @param string $filename
+         *
          * @throws DatabaseException
          */
         public function importFile(string $filename): void
@@ -173,6 +183,7 @@
 
         /**
          * @param array $entities
+         *
          * @throws DatabaseException
          */
         private function saveFile(array $entities): void
@@ -188,8 +199,10 @@
 
         /**
          * @param string $csvLine
-         * @return EntityInterface
+         *
          * @throws DatabaseException
+         *
+         * @return EntityInterface
          */
         public function mapToEntity(string $csvLine): EntityInterface
         {
@@ -205,7 +218,7 @@
                 );
             }
 
-            $entity = new $this->class;
+            $entity = new $this->class();
             $elementNumber = 0;
 
             foreach ($this->getEntitySetters() as $method) {
@@ -218,8 +231,10 @@
 
         /**
          * @param $entity
-         * @return string
+         *
          * @throws DatabaseException
+         *
+         * @return string
          */
         public function mapEntityToLine($entity): string
         {
@@ -276,20 +291,22 @@
 
         /**
          * @param string $methodName
+         *
          * @return bool
          */
         private function isGetterMethod(string $methodName): bool
         {
-            return substr( $methodName, 0, 3 ) === "get";
+            return substr($methodName, 0, 3) === 'get';
         }
 
         /**
          * @param string $methodName
+         *
          * @return bool
          */
         private function isSetterMethod(string $methodName): bool
         {
-            return substr( $methodName, 0, 3 ) === "set";
+            return substr($methodName, 0, 3) === 'set';
         }
 
         /**
@@ -308,15 +325,16 @@
         }
 
         /**
-         * @param array $entities
+         * @param array           $entities
          * @param EntityInterface $entity
+         *
          * @throws DatabaseException
          */
         private function checkDuplacates(array $entities, EntityInterface $entity): void
         {
             foreach ($entities as $e) {
-                if ((string)$e === (string)$entity) {
-                    throw new DatabaseException("Entity already exists");
+                if ((string) $e === (string) $entity) {
+                    throw new DatabaseException('Entity already exists');
                 }
             }
         }
