@@ -325,7 +325,7 @@ class CsvDatabaseManager implements DatabaseInterface
     }
 
     /**
-     * @param array $entities
+     * @param array           $entities
      * @param EntityInterface $entity
      *
      * @throws DatabaseException
@@ -333,7 +333,7 @@ class CsvDatabaseManager implements DatabaseInterface
     private function checkDuplacates(array $entities, EntityInterface $entity): void
     {
         foreach ($entities as $e) {
-            if ((string)$e === (string)$entity) {
+            if ((string) $e === (string) $entity) {
                 throw new DatabaseException('Entity already exists');
             }
         }
